@@ -25,7 +25,8 @@ print(dp[-1][-1])
 # 递推方程
 # dp(j) = dp(j) 不装新的物品
 # dp(j) = dp(j-v_i) + w_i 装新的物品i
-# 但数组其实是从二维组抽象而来的 因此并不是直接写出的递推方程
+# 但数组其实是从二维组优化而来的 因此并不是直接写出的递推方程
+# 优化过程参见https://www.acwing.com/solution/content/3982/
 
 n, v = map(int, input().split())
 goods = []
@@ -35,7 +36,7 @@ for i in range(n):
 dp = [0] * (v+1)
 
 for i in range(1, n+1):
-    for j in range(v, -1, -1):
+    for j in range(v, -1, -1):   # j逆序因为我们希望dp[j-goods[i-1][0]] 保存上一轮的dp[j-goods[i-1][0]]如果是逆序的话 当前位置其不会被更新
         if j >= goods[i-1][0]:
             dp[j] = max(dp[j], dp[j-goods[i-1][0]] + goods[i-1][1])
 print(dp[v])
