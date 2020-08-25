@@ -36,7 +36,7 @@ for i in range(n):
 dp = [0] * (v+1)
 
 for i in range(1, n+1):
-    for j in range(v, -1, -1):   # j逆序因为我们希望dp[j-goods[i-1][0]] 保存上一轮的dp[j-goods[i-1][0]]如果是逆序的话 当前位置其不会被更新
+    for j in range(v, -1, -1):   # j逆序因为我们希望dp[j-goods[i-1][0]] 保存上一轮的dp[j-goods[i-1][0]]如果是逆序的话 循环到当前位置它还没有被更新
         if j >= goods[i-1][0]:
             dp[j] = max(dp[j], dp[j-goods[i-1][0]] + goods[i-1][1])
 print(dp[v])
