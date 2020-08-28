@@ -40,3 +40,18 @@ for i in range(1, n+1):
         if j >= goods[i-1][0]:
             dp[j] = max(dp[j], dp[j-goods[i-1][0]] + goods[i-1][1])
 print(dp[v])
+
+# 优化内部循环边界条件
+
+n, v = map(int, input().split())
+goods = []
+for i in range(n):
+    goods.append([int(i) for i in input().split()])
+
+dp = [0] * (v+1)
+
+for i in range(1, n+1):
+    for j in range(v, goods[i-1][0]-1, -1):
+        if j >= goods[i-1][0]:
+            dp[j] = max(dp[j], dp[j-goods[i-1][0]] + goods[i-1][1])
+print(dp[v])
