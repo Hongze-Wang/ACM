@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-const int maxn = 10005;
+const int maxn = 1005;
 
 using namespace std;
 
